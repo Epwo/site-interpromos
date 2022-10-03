@@ -1,0 +1,123 @@
+body{
+  background-color: rgb(37, 37, 37);
+}
+
+.LightMode{
+  background-color: rgb(255, 255, 255);
+
+}
+
+
+
+@media only screen and ( orientation: portrait ) {
+
+  .container{
+    display: grid;
+      position: relative;
+  }
+
+  .ButtonDayNight{
+    position: absolute;
+    top: 2%;
+    right: 3%;
+    width: 10%;
+  }
+
+  img { 
+      padding: 8%;
+      width: 65%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto
+    }
+
+  .vertical_menu {
+      background-color: rgb(44, 43, 43);
+      width: 80%;
+      margin:auto;
+    }
+
+
+  .vertical_menu a {
+      color: rgb(193, 193, 193);
+      display: block;
+      padding: 7%;
+      text-decoration: none;
+    }
+    
+  .vertical_menu a:hover {
+      background-color: rgb(103, 99, 99);
+    }
+    
+  .vertical_menu a.active {
+      background-color: #a62020;
+      color: rgb(215, 212, 212);
+    }
+
+  .Sign{
+    position:fixed;
+    bottom: 3px;
+    right: -6px;
+    padding: auto;
+    width: 3%;
+  }
+}
+
+@media only screen and ( orientation: landscape) {
+  
+  .container{
+    position: relative;
+    float: left;
+    display: flex;
+    align-items: center;
+  }
+
+  .ButtonDayNight{
+    position: absolute;
+    bottom: 3%;
+    left: 1%;
+    width: 4.5%;
+  }
+
+  img { 
+    position: relative;
+    padding-top: 6%;
+    display: block;
+    width: 35%;
+    float: left;    
+    margin-left: 5%;
+  }
+
+
+  .vertical_menu {
+    background-color: rgb(44, 43, 43);
+    margin-top: 1%;
+    width: 38%;
+    float: right;
+    margin-right: 6%;
+  }
+  
+  
+  .vertical_menu a {
+    color: rgb(193, 193, 193);
+    display: block;
+    padding: 7%;
+    text-decoration: none;
+  }
+
+  .vertical_menu a:hover {
+    background-color: rgb(103, 99, 99);
+  }
+  
+.vertical_menu a.active {
+    background-color: #a62020;
+    color: rgb(215, 212, 212);
+  }
+
+.Sign{
+  position:fixed;
+  bottom: 10px;
+  right: 3px;
+  width: 1.5%;
+}
+}

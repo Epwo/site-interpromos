@@ -1,0 +1,166 @@
+<head></head>
+<navbar>
+  <img class="Sign" src="../images/SignB.png">
+  
+  <input class="ButtonDayNight" type="image" src="../images/DAYnNGH.png" onclick="myFunction()" /> 
+<script>
+    window.IsDark = 0;
+    function myFunction() {
+       document.body.classList.toggle("LightMode");
+       if (window.IsDark == 0){
+            document.querySelector('table').style.backgroundColor = '#e6e7e8';
+            document.querySelector('.ContainerMatchEnCours').style.backgroundColor = '#92a0b5';
+            document.querySelector('.TextMatch').style.color = 'rgb(36, 37, 39)';
+            document.querySelector('.J1').style.color = 'rgb(255, 255, 255)';
+            document.querySelector('.J2').style.color = 'rgb(255, 255, 255)';
+            document.querySelector('.TournamentContainer').style.backgroundColor = 'rgb(207, 204, 204)';
+            document.body.style.scrollbarFaceColor="#373a3b"
+            var ChoiceLignesImp = document.querySelectorAll('tr:nth-child(even)');
+            ChoiceLignesImp.forEach(ChoiceLignesImp => {
+              ChoiceLignesImp.style.backgroundColor = '#979ba0';
+            });
+            var Choices = document.querySelectorAll('td, th');
+            Choices.forEach(choice => {
+              choice.style.color = 'rgb(53, 53, 53)';
+              choice.style.border = '2px solid #272525';
+            });
+            document.querySelector('.sign').setAttribute('src',"../images/SignN.png")
+            window.IsDark = 1;
+            console.log("White")
+       }
+        else{
+            document.querySelector('table').style.backgroundColor = 'rgb(37, 37, 37)';
+            document.querySelector('.ContainerMatchEnCours').style.backgroundColor = '#4c535e';
+            document.querySelector('.TextMatch').style.color = 'rgb(217, 224, 232)';
+            document.querySelector('.J1').style.color = 'rgb(0, 0, 0)';
+            document.querySelector('.J2').style.color = 'rgb(0, 0, 0)';
+            document.querySelector('.TournamentContainer').style.backgroundColor = 'rgb(58, 56, 56)';
+
+            var ChoiceLignesImp = document.querySelectorAll('tr:nth-child(even)');
+            ChoiceLignesImp.forEach(ChoiceLignesImp => {
+              ChoiceLignesImp.style.backgroundColor = '#515151';
+            });
+            var Choices = document.querySelectorAll('td, th');
+            Choices.forEach(choice => {
+                choice.style.color = 'azure';
+                choice.style.border = '2px solid #dddddd';
+            });
+            document.querySelector('.sign').setAttribute('src',"../images/SignB.png")
+            window.IsDark = 0;
+            console.log("Dark");
+        }
+    }
+</script>
+</navbar>
+<body>
+<link href="../styles/stylePages.css" rel="stylesheet">
+<div class="container"></div>
+    <img class="Logo" src="../images/InterPromo.png">
+<a href="../index.html" ><img class="Home" src="../images/HomeIcon.png"></a>
+    
+<table>
+    <tr>
+      <th></th>
+      <th>A1-CSI</th>
+      <th>A1-CIR</th>
+      <th>A2-CSI</th>
+      <th>A2-CIR</th>
+      <th>A3</th>
+      <th>M1</th>
+      <th>M2</th>
+      <th>Rank</th>
+    </tr>
+    <tr>
+      <td>A1-CIR</td>
+      <td>X</td>
+      <td>2-0</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>A1-CSI</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>A2-CSI</td>
+      <td>0-2</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>A2-CIR</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>A3</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>  
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>M1</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>TBD</td>
+      <td>6</td>
+    </tr>
+    <tr>
+        <td>M2</td>
+        <td>TBD</td>
+        <td>TBD</td>
+        <td>TBD</td>
+        <td>TBD</td>
+        <td>TBD</td>
+        <td>TBD</td>
+        <td>TBD</td>
+        <td>7</td>
+      </tr>
+
+  </table>
+  <div class="TournamentContainer">
+    <iframe src="../Pages/Bracket/responsive-tournament-bracket/dist/index.html" class="Bracket" name="targetframe" allowTransparency="true" scrolling="yes" frameborder="0" ></iframe>
+  </div>
+
+
+<div class="ContainerMatchEnCours">
+    <div class="TextMatch"> Match en Cours</div>
+    <div class="J1">A2-CIR</div>
+    <img class="VersusImg" src="../images/Versus.png">
+    <div class="J2">A1-CSI</div>
+    <div class="ScoreJ1">2</div>
+    <div class="tiret">-</div>
+    <div class="ScoreJ2">0</div>
+</div>
+</body>
