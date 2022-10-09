@@ -1,0 +1,24 @@
+.popup {
+    position: relative;
+    width: 50%;
+    height:60%;
+    background-color:rgba(104, 81, 81, 0.644);   
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    display:table-cell;
+}
+
+.txtField{
+    position: relative;
+    margin: auto;
+    height: 55%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
+#buttonOK, #pass{
+    position: relative;
+    left: 50%;
+
+}
