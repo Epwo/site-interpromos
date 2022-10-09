@@ -182,7 +182,10 @@ body{
       
       }
   
-
+      .ContainerTables {
+        display: none;
+      }
+      
       table {
         display: none;
         font-family: arial, sans-serif;
@@ -239,11 +242,6 @@ body{
         -o-transform-origin: 0 0;
         -webkit-transform: scale(1.75);
         -webkit-transform-origin: 0 0;
-      }
-
-
-      OsefColorSelctor {
-        background-color: #979ba0;
       }
 
 }
@@ -376,9 +374,48 @@ body{
     opacity: 0%;  
   }
 
+  .ContainerTables {
+    display: flex;
+  }
+
+.button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.bar {
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
+}
+
+.black, .hover-black:hover {
+  color: rgb(249, 247, 244) ;
+  background-color: rgb(6, 6, 6) ;
+}
+  .bar .bar-item {
+    padding: 8px 16px;
+    float: left;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+}
+  .red, .hover-red:hover {
+    color: rgb(249, 247, 244) !important;
+    background-color: rgb(183, 27, 16) !important;
+}
 
   table {
-    display: none;
     font-family: arial, sans-serif;
     font-size: 80%;
     top: 4%;
@@ -410,7 +447,7 @@ body{
 
 /* TOURNAMENT */
   .TournamentContainer{
-    display: flex;
+    display: none;
     position: relative;
 
     width: 63%;
