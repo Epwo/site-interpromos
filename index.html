@@ -1,11 +1,11 @@
 <head>
 <body>
-<navbar><img class="Sign" src="images/SignB.png"></navbar>
-<link href="styles/style.css" rel="stylesheet">
+<navbar><img class="Sign" src="public_html/img/SignB.png"></navbar>
+<link href="public_html/css/style.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <div class="container"></div>
-    <img src="images/InterPromo.png">
-<input class="ButtonDayNight" type="image" src="images/DAYnNGH.png" onclick="myFunction()" /> 
+    <img src="public_html/img/InterPromo.png">
+<input class="ButtonDayNight" type="image" src="public_html/img/DAYnNGH.png" onclick="myFunction()" /> 
 <script>
     window.IsDark = 0;
     function myFunction() {
@@ -16,7 +16,7 @@
             Choices.forEach(choice => {
                 choice.style.color = 'rgb(14, 14, 14)';
             });
-            document.querySelector('.sign').setAttribute('src',"images/SignN.png")
+            document.querySelector('.sign').setAttribute('src',"public_html/img/SignN.png")
             window.IsDark = 1;
             console.log("White")
        }
@@ -26,7 +26,7 @@
             Choices.forEach(choice => {
                 choice.style.color = 'rgb(193, 193, 193)';
             });
-            document.querySelector('.sign').setAttribute('src',"images/SignB.png")
+            document.querySelector('.sign').setAttribute('src',"public_html/img/SignB.png")
             window.IsDark = 0;
             console.log("Dark");
         }
@@ -34,7 +34,7 @@
 </script>
 <div class="vertical_menu" name="MenuV">
     <a href="#" class="active">Acceuil</a>
-    <a href="Pages/basket.html">Basket</a>
+    <a href="#">Basket</a>
     <a href="#">Hand</a>
     <a href="#">Bad</a>
     <a href="#">Volley</a>
