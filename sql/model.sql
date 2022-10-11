@@ -19,13 +19,13 @@ CREATE TABLE users (
     email VARCHAR(255) NOT NULL,
     password_hash VARCHAR(60) NOT NULL, -- use PASSWORD_BCRYPT algo
     name VARCHAR(64) NOT NULL,
-    access_token VARCHAR(64),
+    access_token VARCHAR(64)
 );
 
 -- Table teams
 CREATE TABLE teams (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(64) NOT NULL,
+    name VARCHAR(64) NOT NULL
 );
 
 -- Table sports
@@ -34,7 +34,7 @@ CREATE TABLE sports (
     name VARCHAR(64) NOT NULL,
     description TEXT,
 
-    UNIQUE (name),
+    UNIQUE (name)
 );
 
 -- Table matches
@@ -45,7 +45,7 @@ CREATE TABLE matches (
 
     FOREIGN KEY (sport_id) REFERENCES sports(id)
         ON UPDATE CASCADE
-        ON DELETE CASCADE,
+        ON DELETE CASCADE
 );
 
 -- Table participations
@@ -61,5 +61,5 @@ CREATE TABLE participations (
         ON DELETE CASCADE,
     FOREIGN KEY (match_id) REFERENCES matches(id)
         ON UPDATE CASCADE
-        ON DELETE CASCADE,
+        ON DELETE CASCADE
 );
