@@ -1,10 +1,8 @@
 <?php
 
 /**
- * PHP version 8.1.0
+ * PHP version 8.1.11
  * 
- * @author Maël Grellier Neau <mael.grelneau@gmail.com>
- * @author Maxence Laurent <nano0@duck.com>
  * @author Youn Mélois <youn@melois.dev>
  */
 

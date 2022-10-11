@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP version 8.1.0
+ * PHP version 8.1.11
  * 
  * @author Youn Mélois <youn@melois.dev>
  */
@@ -76,6 +76,28 @@ class Database
     }
 
     /**
+     * Verifies the user access token.
+     * 
+     * @param string $access_token
+     * 
+     * @return bool
+     */
+    public function verifyUserAccessToken(
+        string $access_token
+    ): bool {
+        $request = 'SELECT * FROM users
+                        WHERE access_token = :access_token';
+
+        $statement = $this->PDO->prepare($request);
+        $statement->bindParam(':access_token', $access_token);
+        $statement->execute();
+
+        $result = $statement->fetch(PDO::FETCH_OBJ);
+
+        return !empty($result);
+    }
+
+    /**
      * Create an user in the database and return a bool to result.
      * 
      * @param string $name     Name of the user. 
@@ -136,5 +158,90 @@ class Database
         $statement = $this->PDO->prepare($request);
         $statement->bindParam(':email', $email);
         return $statement->execute();
+    }
+
+    /**
+     * Connects the user by returning its unique id if the 
+     * credentials are valid.
+     * 
+     * @param string $email
+     * @param string $password
+     * @param int $session_expire (optional) The lifetime of the session cookie in seconds.
+     * 
+     * @throws AuthenticationException If the authentication failed.
+     */
+    public function connectUser(
+        string $email,
+        string $password,
+        int $session_expire = 0
+    ): bool {
+        // test if the credentials are correct
+        if (!$this->verifyUserCredentials($email, $password)) {
+            throw new AuthenticationException();
+        }
+
+        // make email lowercase in case the user used uppercase letters
+        $email = strtolower($email);
+
+        // create a unique token used to identify the user
+        $access_token = hash('sha256', $email . $password . microtime(true));
+
+        // Set session hash on the user
+        $request = 'UPDATE users SET access_token = :access_token
+                        WHERE email = :email';
+
+        $statement = $this->PDO->prepare($request);
+        $statement->bindParam(':email', $email);
+        $statement->bindParam(':access_token', $access_token);
+        $success = $statement->execute();
+
+        // Throw an exception if the update failed
+        if (!$success) {
+            throw new Exception('Failed to connect user.');
+        }
+
+        if ($session_expire > 0) {
+            $session_expire = time() + $session_expire;
+        }
+
+        // set the session cookie
+        return setcookie(
+            ACCESS_TOKEN_NAME,
+            $access_token,
+            $session_expire
+        );
+    }
+
+    /**
+     * Disconnects the user by deleting the access token.
+     * 
+     * @throws AuthenticationException If the access token is invalid.
+     */
+    public function disconnectUser(): bool
+    {
+        if (!isset($_COOKIE[ACCESS_TOKEN_NAME])) {
+            return false;
+        }
+
+        $access_token = $_COOKIE[ACCESS_TOKEN_NAME];
+
+        if (!$this->verifyUserAccessToken($access_token)) {
+            throw new AuthenticationException();
+        }
+
+        // remove access token from the user
+        $request = 'UPDATE users SET access_token = NULL
+                        WHERE access_token = :access_token';
+
+        $statement = $this->PDO->prepare($request);
+        $statement->bindParam(':access_token', $access_token);
+        $success = $statement->execute();
+
+        // delete the session cookie
+        return $success && setcookie(
+            ACCESS_TOKEN_NAME,
+            '',
+            time() - 3600
+        );
     }
 }
