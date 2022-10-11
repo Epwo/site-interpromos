@@ -2,7 +2,6 @@
 <html lang="fr">
 
 <body>
-    <navbar><img class="Sign" src="public_html/img/SignB.png"></navbar>
     <link href="public_html/css/style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <div class="container"></div>
@@ -19,7 +18,6 @@
                 Choices.forEach(choice => {
                     choice.style.color = 'rgb(14, 14, 14)';
                 });
-                document.querySelector('.sign').setAttribute('src', "public_html/img/SignN.png")
                 window.IsDark = 1;
                 console.log("White")
             } else {
@@ -28,7 +26,6 @@
                 Choices.forEach(choice => {
                     choice.style.color = 'rgb(193, 193, 193)';
                 });
-                document.querySelector('.sign').setAttribute('src', "public_html/img/SignB.png")
                 window.IsDark = 0;
                 console.log("Dark");
             }
