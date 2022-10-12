@@ -244,4 +244,57 @@ class Database
             time() - 3600
         );
     }
+
+    /**
+     * Gets sports for an id 
+     * 
+     * @param int $id
+     * 
+     * @return ?String return null if the sport_id don't exist
+     */
+    public function getSports(int $id): ?String {
+        $request = 'SELECT name from sports where id = :id';
+
+        $statement = $this->PDO->prepare($request);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+
+        return $statement->fetch(PDO::FETCH_OBJ)->name;
+    }
+
+    /**
+     * Gets all infor of a match 
+     * 
+     * @param int $id
+     * 
+     * @return ?array return null if the match_id don't exist
+    */
+    public function getMatchInfo(int $id): ?array {
+        $request = 'SELECT m.id, s.name "sport_name", m.type from matches m 
+                        left join sports s on sport_id = s.id where m.id = :id';
+
+        $statement = $this->PDO->prepare($request);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Gets all teams for a match
+     * 
+     * @param int $id of the match
+     * 
+     * @return ?array return null if there no team on the match
+     */
+    public function getTeamsOnMatch(int $id): ?array {
+        $request = 'SELECT t.name "team_name", team_id, score from participations 
+                        left join teams t on team_id = t.id where match_id = :id';
+
+        $statement = $this->PDO->prepare($request);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
