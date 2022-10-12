@@ -246,20 +246,34 @@ class Database
     }
 
     /**
-     * Gets sports for an id 
+     * Gets sport info for an id 
      * 
      * @param int $id
      * 
-     * @return ?String return null if the sport_id don't exist
+     * @return ?arry return null if the sport_id don't exist
      */
-    public function getSports(int $id): ?String {
-        $request = 'SELECT name from sports where id = :id';
+    public function getSportInfo(int $id): ?array {
+        $request = 'SELECT name, description from sports where id = :id';
 
         $statement = $this->PDO->prepare($request);
         $statement->bindParam(':id', $id);
         $statement->execute();
 
-        return $statement->fetch(PDO::FETCH_OBJ)->name;
+        return $statement->fetch(PDO::FETCH_OBJ);
+    }
+
+    /**
+     * Gets all sports and their id and name
+     * 
+     * @return ?array return null if there is no sport in the db
+     */
+    public function getSports(): ?Array {
+        $request = 'SELECT id, name from sports';
+
+        $statement = $this->PDO->prepare($request);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
